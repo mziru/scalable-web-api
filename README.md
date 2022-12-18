@@ -14,15 +14,9 @@ Technologies:
 
 The app requires a PostgreSQL database connection to run. To set this up, add a file to the base directory called "postgres_uri.txt" containing the URI for the database that you would like to use.
 
-For a local connection, the URI will look something like:
+For a local connection, the URI will look something like this:
 
 postgresql://<db_user>:<db_password>@localhost/<db_name>
-
-For a Unix socket connection to Cloud SQL, the URI will look something like:
-
-postgresql+psycopg2://<db_user>:<db_password>@<db_name>?host=<instance_unix_socket>/.s.PGSQL.5432
-
-(NOTE: the query parameter for the socket, in this case "host," may vary depending on the driver. See the documentation at https://cloud.google.com/sql/docs/postgres/connect-overview for more information.)
 
 Once the URI is configured, the app can be tested locally by running "main.py". When the app is run, Swagger will automatically build documentation and a user interface, which can be used to explore and test the API:
 
