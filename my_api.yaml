@@ -1,0 +1,147 @@
+openapi: "3.0.0"
+
+info:
+  title: "Covid Test REST API (example)"
+  description: "An example web API with create, read, update, and delete (CRUD) operations, built as a foundation for
+   developing more complex database interfaces in Python. The sample database contains fictional people and Covid-19 
+   test results, which have a one-to-many relationship."
+  version: "1.0.0"
+
+servers:
+  - url: "/covid_api"
+
+components:
+  schemas:
+    Person:
+      type: "object"
+      required:
+        - name
+        - covid_positive
+      properties:
+        name:
+          type: "string"
+        covid_positive:
+          type: "boolean"
+    Result:
+      type: "object"
+      required:
+        - name
+        - covid_positive
+        - pcr
+      properties:
+        name:
+          type: "string"
+        covid_positive:
+          type: "boolean"
+        pcr:
+          type: "boolean"
+  parameters:
+    name:
+      name: "name"
+      description: "Name of the person to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
+
+
+paths:
+  /people:
+    get:
+      operationId: "people.read_all_people"
+      tags:
+        - "People"
+      summary: "Read the list of all people."
+      responses:
+        "200":
+          description: "Successfully read list"
+    post:
+      operationId: "people.create_person"
+      tags:
+        - People
+      summary: "Create a person"
+      requestBody:
+        description: "Person to create"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "person"
+              $ref: "#/components/schemas/Person"
+      responses:
+        "201":
+          description: "Successfully created person"
+  /people/{name}:
+    get:
+      operationId: "people.read_one_person"
+      tags:
+        - People
+      summary: "Read one person"
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "200":
+          description: "Successfully read person"
+    put:
+      tags:
+        - People
+      operationId: "people.update_covid_status"
+      summary: "Update a person's covid status"
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "200":
+          description: "Successfully updated person"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "person"
+              $ref: "#/components/schemas/Person"
+    delete:
+      tags:
+        - People
+      operationId: "people.delete_person"
+      summary: "Delete a person"
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "204":
+          description: "Successfully deleted person"
+
+  /results:
+    get:
+      operationId: "results.read_all_results"
+      tags:
+        - "Results"
+      summary: "Read the list of all covid results."
+      responses:
+        "200":
+          description: "Successfully read results list"
+    post:
+      operationId: "results.create_result"
+      tags:
+        - Results
+      summary: "Create a result"
+      requestBody:
+        description: "Result to create"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "result"
+              $ref: "#/components/schemas/Result"
+      responses:
+        "201":
+          description: "Successfully created result"
+  /results/{name}:
+    get:
+      operationId: "results.read_results_one_person"
+      tags:
+        - Results
+      summary: "Read list of results for one person"
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "200":
+          description: "Successfully read results"

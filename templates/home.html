@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REST API Example</title>
+</head>
+    <h1>
+        Covid Test REST API (example)
+    </h1>
+    <p>
+        This is the homepage for an example web API with create, read, update, and delete (CRUD) operations, built as a
+        foundation for developing more complex database interfaces in Python. The sample database contains fictional
+        people and Covid-19 test results, which have a one-to-many relationship.
+    </p>
+    <div></div><a href="/covid_api/people">people_data</a>
+    <div></div><a href="/covid_api/results">results_data</a>
+    <div></div><a href="/covid_api/ui">swagger_ui</a>
+<body>
+  <h2>
+        Database content summary:
+  </h2>
+    <ul>
+        {% for person in people %}
+        <li>
+            <span>
+
+                {{ person.name }}{{ " has " }}{{ person.results|length }}{{ " result(s) on record. "}}
+                {{ "Current status: "}}
+                {% if person.covid_positive == False %}
+                    {{ "NEGATIVE" }}
+                {% else %}
+                    {{ "POSITIVE" }}
+                {% endif %}
+                {{ "(updated: " }}{{ person.timestamp }}{{ ")" }}
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

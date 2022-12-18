@@ -1,0 +1,15 @@
+MarkupSafe~=2.1.1
+Werkzeug~=2.2.2
+Jinja2~=3.1.2
+click~=8.1.3
+itsdangerous~=2.1.2
+Flask~=2.2.2
+connexion~=2.14.1
+connexion[swagger-ui]==2.14.1
+Flask-SQLAlchemy~=3.0.2
+SQLAlchemy~=1.4.44
+marshmallow-sqlalchemy~=0.28.1
+marshmallow~=3.19.0
+flask-marshmallow~=0.14.0
+psycopg2~=2.9.5
+swagger-ui-bundle~=0.0.9
