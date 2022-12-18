@@ -59,7 +59,8 @@ paths:
       operationId: "people.create_person"
       tags:
         - People
-      summary: "Create a person"
+      summary: "Create a new person. NOTE: For the purpose of this example database, \"name\" is a unique identifier for 
+      each person."
       requestBody:
         description: "Person to create"
         required: True
@@ -76,7 +77,7 @@ paths:
       operationId: "people.read_one_person"
       tags:
         - People
-      summary: "Read one person"
+      summary: "Read one person."
       parameters:
         - $ref: "#/components/parameters/name"
       responses:
@@ -86,7 +87,7 @@ paths:
       tags:
         - People
       operationId: "people.update_covid_status"
-      summary: "Update a person's covid status"
+      summary: "Update a person's covid status."
       parameters:
         - $ref: "#/components/parameters/name"
       responses:
@@ -102,7 +103,7 @@ paths:
       tags:
         - People
       operationId: "people.delete_person"
-      summary: "Delete a person"
+      summary: "Delete a person from the database."
       parameters:
         - $ref: "#/components/parameters/name"
       responses:
@@ -114,7 +115,7 @@ paths:
       operationId: "results.read_all_results"
       tags:
         - "Results"
-      summary: "Read the list of all covid results."
+      summary: "Read the list of all test results."
       responses:
         "200":
           description: "Successfully read results list"
@@ -122,7 +123,10 @@ paths:
       operationId: "results.create_result"
       tags:
         - Results
-      summary: "Create a result"
+      summary: "Create a new test result. Using this endpoint will trigger an \"upsert\": if a new test result is created 
+      for a person that already exists in the database, then that person's covid status will be updated. If a new test 
+      result is created for a person that does not yet exist in the database, then a new person will be created and the
+      result will be associated with that person."
       requestBody:
         description: "Result to create"
         required: True
@@ -139,7 +143,7 @@ paths:
       operationId: "results.read_results_one_person"
       tags:
         - Results
-      summary: "Read list of results for one person"
+      summary: "Read list of all test results for one person."
       parameters:
         - $ref: "#/components/parameters/name"
       responses:
