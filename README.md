@@ -26,5 +26,5 @@ postgresql+psycopg2://<db_user>:<db_password>@<db_name>?host=<instance_unix_sock
 
 Once the URI is configured, the app can be tested locally by running "main.py". When the app is run, Swagger will automatically build documentation and a user interface, which can be used to explore and test the API:
 
-<img src="https://github.com/mziru/web-api-example/blob/master/readme%20images/swagger-ui.png?raw=true" width="600">
+<img src="https://github.com/mziru/web-api-example/blob/master/swagger-ui.png?raw=true">
 
