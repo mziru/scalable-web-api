@@ -1,4 +1,4 @@
-# web-api-example
+# scalable-web-api
 
 This repo contains code for an example RESTful web API with create, read, update, and delete (CRUD) operations and data persistence. It is scalable and intended to serve as a foundation for developing more complex database interfaces in Python. It can be run locally or deployed with Google App Engine, as I have done here: https://web-api-example-371919.wl.r.appspot.com/. 
 
@@ -33,5 +33,5 @@ NOTE: this authorization method is used for testing purposes only and should not
 
 Once the database URI and authorization credentials are configured, the app can be tested locally by running "main.py". When the app is run, Swagger will automatically build documentation and a browser interface, which can be used to explore and test the API:
 
-<img src="https://github.com/mziru/web-api-example/blob/master/swagger-ui.png?raw=true">
+<img src="https://github.com/mziru/scalable-web-api/blob/master/swagger-ui.png?raw=true">
 
