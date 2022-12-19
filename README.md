@@ -12,7 +12,7 @@ The sample data models represent fictional people and Covid-19 test results, whi
 -	marshmallow for data object serialization
 -	Swagger for API design and documentation (OpenAPI Specification)
 
-#### Database configuration:
+#### Database connection:
 
 The app requires a PostgreSQL database connection to run. To set this up, add a file to the base directory called "postgres_uri.txt" containing the URI for the database that you would like to use.
 
