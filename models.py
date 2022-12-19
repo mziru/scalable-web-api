@@ -7,7 +7,6 @@ class Person(db.Model):
     __tablename__ = "person"
     name = db.Column(db.String(32), primary_key=True)
     covid_positive = db.Column(db.Boolean)
-    # TODO: check into datetime best practice
     timestamp = db.Column(
         db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
     )
