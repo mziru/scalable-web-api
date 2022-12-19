@@ -10,9 +10,11 @@ basedir = pathlib.Path(__file__).parent.resolve()
 connex_app = connexion.App(__name__, specification_dir=basedir,
                            options={"swagger_ui": True})
 
+# database uri configuration for local hosting
 # with open("local_postgres_uri.txt", "r") as file:
 #     postgres_uri = file.read()
 
+# database uri configuration for CloudSQL
 with open("postgres_uri.txt", "r") as file:
     postgres_uri = file.read()
 
