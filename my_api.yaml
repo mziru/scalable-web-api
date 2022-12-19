@@ -3,7 +3,7 @@ openapi: "3.0.0"
 info:
   title: "Covid Test REST API (example)"
   description: "An example web API with create, read, update, and delete (CRUD) operations, built as a foundation for
-   developing more complex database interfaces in Python. The sample database contains fictional people and Covid-19 
+   developing more complex database interfaces in Python. The sample database stores fictional people and Covid-19 
    test results, which have a one-to-many relationship."
   version: "1.0.0"
 
@@ -11,6 +11,12 @@ servers:
   - url: "/covid_api"
 
 components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      x-basicInfoFunc: "auth.basic_auth"
+
   schemas:
     Person:
       type: "object"
@@ -56,6 +62,8 @@ paths:
         "200":
           description: "Successfully read list"
     post:
+      security:
+        - basicAuth: [ ]
       operationId: "people.create_person"
       tags:
         - People
@@ -84,6 +92,8 @@ paths:
         "200":
           description: "Successfully read person"
     put:
+      security:
+        - basicAuth: [ ]
       tags:
         - People
       operationId: "people.update_covid_status"
@@ -100,6 +110,8 @@ paths:
               x-body-name: "person"
               $ref: "#/components/schemas/Person"
     delete:
+      security:
+        - basicAuth: [ ]
       tags:
         - People
       operationId: "people.delete_person"
@@ -120,6 +132,8 @@ paths:
         "200":
           description: "Successfully read results list"
     post:
+      security:
+        - basicAuth: [ ]
       operationId: "results.create_result"
       tags:
         - Results
