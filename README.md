@@ -1,4 +1,4 @@
-# web-api-with-ORM
+# web-api-with-orm
 
 This repo contains code for an example RESTful web API with create, read, update, and delete (CRUD) operations and data persistence. It is scalable and intended to serve as a foundation for developing more complex database interfaces in Python. It can be run locally or deployed with Google App Engine, as I have done here: https://web-api-example-371919.wl.r.appspot.com/. 
 
