@@ -74,14 +74,14 @@ trigger_ddl = """
     BEFORE INSERT OR UPDATE ON result
         FOR EACH ROW EXECUTE PROCEDURE update_covid_status();"""
 
-# call SQLAlchemy event lister function to issue custom SQL after tables are created based on model metadata
+# call SQLAlchemy event lister function to issue custom SQL after the table for Result is created
 event.listen(
-    db.Model.metadata,
+    Result.__table__,
     "after_create",
     DDL(trigger_ddl)
 )
 
-# the SQLAlchemy create_all() method will issue queries that first check for the existence of each individual table
-# defined in the model metadata, and if not found will issue the CREATE statements
+# the SQLAlchemy create_all() method will issue queries that first check for the existence of each individual table,
+# and if not found will issue the CREATE statements
 with app.app_context():
-    db.Model.metadata.create_all(db.engine)
+    db.create_all()
