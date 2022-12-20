@@ -1,6 +1,6 @@
 # web-api-with-orm
 
-This repo contains code for an example RESTful web API with create, read, update, and delete (CRUD) operations and data persistence. It is scalable and intended to serve as a foundation for developing more complex database interfaces in Python using Object-Relational Mapping. It can be run locally or deployed with Google App Engine. 
+This repo contains code for an example RESTful web API with create, read, update, and delete (CRUD) operations and data persistence. It is scalable and intended to serve as a foundation for developing more complex database interfaces in Python using Object-Relational Mapping. It can be run locally or deployed with Google App Engine, as I've done here: https://web-api-example-371919.wl.r.appspot.com/ 
 
 The sample data models represent fictional people and Covid-19 test results, which have a one-to-many relationship. Each person's Covid status is updated automatically based on their most recent test result.
 
