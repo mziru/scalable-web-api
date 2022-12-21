@@ -1,6 +1,6 @@
 from flask import make_response, abort
 from config import db
-from models import Person, person_schema, people_schema
+from models import Person, person_schema, people_schema, Result
 
 
 def read_all_people():

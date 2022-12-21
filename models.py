@@ -12,7 +12,7 @@ class Person(db.Model):
         db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow
     )
     # persons and results have a one-to-many relationship
-    results = db.relationship('Result', backref='person', lazy=True)
+    results = db.relationship('Result', backref='person', lazy=True, cascade="all, delete-orphan")
 
 
 # object data model for Result table
@@ -58,7 +58,7 @@ results_schema = ResultSchema(many=True)
 # add custom SQL to execute after "person" and "result" table creation.
 # creates a trigger to execute upserts on the "person" table based inserts or updates on the "result" table.
 trigger_ddl = """
-    CREATE OR REPLACE FUNCTION update_covid_status() RETURNS trigger AS $update_covid_status$
+    CREATE FUNCTION update_covid_status() RETURNS trigger AS $update_covid_status$
         BEGIN
             INSERT INTO person(name, covid_positive, timestamp)
             VALUES(NEW.name, NEW.covid_positive, now())
@@ -70,7 +70,7 @@ trigger_ddl = """
         END
     $update_covid_status$ LANGUAGE plpgsql;
     
-    CREATE OR REPLACE TRIGGER update_covid_status
+    CREATE TRIGGER update_covid_status
     BEFORE INSERT OR UPDATE ON result
         FOR EACH ROW EXECUTE PROCEDURE update_covid_status();"""
 
