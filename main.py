@@ -4,7 +4,6 @@ from models import Person, Result, create_tables
 
 app = config.connex_app
 app.add_api(config.basedir / "my_api.yaml")
-
 create_tables()
 
 

@@ -84,7 +84,7 @@ event.listen(
 
 
 # the SQLAlchemy create_all() method will issue queries that first check for the existence of each individual table,
-# and if not found will issue the CREATE statements
+# and if not found will issue the CREATE statements.
 def create_tables():
     with app.app_context():
         try:
