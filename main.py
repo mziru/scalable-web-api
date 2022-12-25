@@ -6,6 +6,8 @@ app = config.connex_app
 app.add_api(config.basedir / "my_api.yaml")
 create_tables()
 
+create_tables()
+
 
 @app.route('/')
 def home_func():
