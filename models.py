@@ -1,6 +1,7 @@
 from datetime import datetime
 from config import db, ma, app
 from sqlalchemy import event, DDL
+from sqlalchemy.exc import IntegrityError
 
 
 # object data model for Person table
@@ -81,7 +82,17 @@ event.listen(
     DDL(trigger_ddl)
 )
 
+
 # the SQLAlchemy create_all() method will issue queries that first check for the existence of each individual table,
 # and if not found will issue the CREATE statements
-with app.app_context():
-    db.create_all()
+def create_tables():
+    with app.app_context():
+        try:
+            db.create_all()
+        # TODO: is there a better way to handle concurrent table creation for new deployments?
+        except IntegrityError:
+            print(
+                "Database unique constraint errors are expected after tables are successfully created for a new "
+                "WSGI deployment with more than one worker."
+                )
+
