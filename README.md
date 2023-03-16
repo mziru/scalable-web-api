@@ -34,5 +34,5 @@ NOTE: this authorization method is used for testing purposes only and should not
 
 Once the database URI and authorization credentials are configured, the app can be tested locally by running "main.py". When the app is run, Swagger will automatically build documentation and a browser interface, which can be used to explore and test the API:
 
-<img src="https://github.com/mziru/scalable-web-api/blob/master/swagger-ui.png?raw=true">
+<img src="https://github.com/mziru/scalable-web-api/blob/master/swagger-ui.png?raw=true" style="width: 100%">
 
